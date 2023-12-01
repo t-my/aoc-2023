@@ -14,20 +14,11 @@
      (let [digits (s/join (filter #(Character/isDigit %) s))]
        (str (first digits) (last digits))))))
 
-;; classic
-(defn solve-classic [i] 
-  (reduce + (map (fn [line]
-                   (Integer/parseInt
-                    (let [digits (s/join (filter #(Character/isDigit %) line))]
-                      (str (first digits) (last digits))))) 
-                 i)))
-
 ;; cool style
-(defn solve-cool [i]
+(defn solve [i]
   (->> i
        (map seq)
        (map extract-number)
        (reduce +)))
 
-(solve-classic input)
-(solve-cool input) 
+(solve input)
